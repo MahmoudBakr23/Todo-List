@@ -1,3 +1,5 @@
+import { displayAddTodoButton } from './todo';
+
 const projects = [];
 const projectsList = document.getElementById('list');
 
@@ -14,11 +16,11 @@ export class Project {
 		projectsList.innerHTML = ``;
 
 		if(projects !== null) {
-				projects.forEach((p) => {
+				projects.forEach((p, index) => {
 					const projectTitle = document.createElement('li');
 					projectTitle.classList = "text-dark p-1"
 					projectTitle.innerHTML = `
-							<a href="#">${p.title}</a>
+							<a id="project${index+1}" "data-project-idx=${index} href="#">${p.title}</a>
 					`.toUpperCase();
 					projectsList.appendChild(projectTitle)
 			})
@@ -51,10 +53,15 @@ export function projectEventListeners() {
 
 		projectForm.reset();
 		projectForm.classList.add('d-none')
-		
+
 		if(projectsList.classList.contains('click')) {
 			togglerBtn.click();
 			projectsList.classList.remove('click')
 		}
+	})
+
+	document.getElementById('list').addEventListener('click', (e) => {
+		const projectId = e.target.getAttribute('data-project-idx');
+		displayAddTodoButton();
 	})
 }
