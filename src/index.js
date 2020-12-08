@@ -1,1 +1,3 @@
-console.log('ok!')
+import * as projectModule from './project'
+
+projectModule.projectEventListeners()
