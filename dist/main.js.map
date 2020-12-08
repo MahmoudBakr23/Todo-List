@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://todo-list/./src/index.js"],"names":[],"mappings":";;;;AAAA,kB","file":"main.js","sourcesContent":["console.log('ok!')"],"sourceRoot":""}
