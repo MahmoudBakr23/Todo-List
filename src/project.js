@@ -12,7 +12,7 @@ export class Project {
 	static displayProjects() {
 		const projectsList = document.getElementById('list');
 		projectsList.innerHTML = ``;
-		
+
 		if(projects !== null) {
 				projects.forEach((p) => {
 					const projectTitle = document.createElement('li');
@@ -48,6 +48,8 @@ export function projectEventListeners() {
 		Project.addProjectToList(newProject);
 		Project.displayProjects();
 
-		document.getElementById('projectForm').reset();
+		projectForm.reset();
+		projectForm.classList.add('d-none')
+		document.querySelector('.navbar-toggler').click();
 	})
 }

@@ -1,0 +1,1 @@
+import * as projectModule from './project'

@@ -10,6 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+/* harmony import */ var _todos__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todos */ "./src/todos.js");
+
 
 
 _project__WEBPACK_IMPORTED_MODULE_0__.projectEventListeners()
@@ -42,7 +44,7 @@ class Project {
 	static displayProjects() {
 		const projectsList = document.getElementById('list');
 		projectsList.innerHTML = ``;
-		
+
 		if(projects !== null) {
 				projects.forEach((p) => {
 					const projectTitle = document.createElement('li');
@@ -78,9 +80,23 @@ function projectEventListeners() {
 		Project.addProjectToList(newProject);
 		Project.displayProjects();
 
-		document.getElementById('projectForm').reset();
+		projectForm.reset();
+		projectForm.classList.add('d-none')
+		document.querySelector('.navbar-toggler').click();
 	})
 }
+
+/***/ }),
+
+/***/ "./src/todos.js":
+/*!**********************!*
+  !*** ./src/todos.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ "./src/project.js");
+
 
 /***/ })
 
