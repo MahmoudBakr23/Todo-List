@@ -31,6 +31,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "projectEventListeners": () => /* binding */ projectEventListeners
 /* harmony export */ });
 const projects = [];
+const projectsList = document.getElementById('list');
 
 class Project {
 	constructor(title) {
@@ -42,7 +43,6 @@ class Project {
 	}
 
 	static displayProjects() {
-		const projectsList = document.getElementById('list');
 		projectsList.innerHTML = ``;
 
 		if(projects !== null) {
@@ -60,6 +60,7 @@ class Project {
 
 const newProjectBtn = document.getElementById('newProject')
 const projectForm = document.getElementById('projectForm')
+const togglerBtn = document.querySelector('.navbar-toggler')
 
 function projectEventListeners() {
 	newProjectBtn.addEventListener('click', () => {
@@ -82,7 +83,11 @@ function projectEventListeners() {
 
 		projectForm.reset();
 		projectForm.classList.add('d-none')
-		document.querySelector('.navbar-toggler').click();
+		
+		if(projectsList.classList.contains('click')) {
+			togglerBtn.click();
+			projectsList.classList.remove('click')
+		}
 	})
 }
 

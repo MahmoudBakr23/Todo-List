@@ -1,4 +1,5 @@
 const projects = [];
+const projectsList = document.getElementById('list');
 
 export class Project {
 	constructor(title) {
@@ -10,7 +11,6 @@ export class Project {
 	}
 
 	static displayProjects() {
-		const projectsList = document.getElementById('list');
 		projectsList.innerHTML = ``;
 
 		if(projects !== null) {
@@ -28,6 +28,7 @@ export class Project {
 
 const newProjectBtn = document.getElementById('newProject')
 const projectForm = document.getElementById('projectForm')
+const togglerBtn = document.querySelector('.navbar-toggler')
 
 export function projectEventListeners() {
 	newProjectBtn.addEventListener('click', () => {
@@ -50,6 +51,10 @@ export function projectEventListeners() {
 
 		projectForm.reset();
 		projectForm.classList.add('d-none')
-		document.querySelector('.navbar-toggler').click();
+		
+		if(projectsList.classList.contains('click')) {
+			togglerBtn.click();
+			projectsList.classList.remove('click')
+		}
 	})
 }
