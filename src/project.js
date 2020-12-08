@@ -1,7 +1,4 @@
-// import * as mainModule from './index'
-
-export const projects = [];
-console.log(projects)
+const projects = [];
 
 export class Project {
 	constructor(title) {
@@ -9,11 +6,12 @@ export class Project {
 	}
 
 	static addProjectToList(project) {
-		projects.push(project)
+		projects.push(project);
 	}
 
 	static displayProjects() {
 		const projectsList = document.getElementById('list');
+		projectsList.innerHTML = ``;
 		
 		if(projects !== null) {
 				projects.forEach((p) => {

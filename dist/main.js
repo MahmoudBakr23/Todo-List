@@ -13,6 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 _project__WEBPACK_IMPORTED_MODULE_0__.projectEventListeners()
+_project__WEBPACK_IMPORTED_MODULE_0__.Project.displayProjects()
 
 /***/ }),
 
@@ -24,14 +25,10 @@ _project__WEBPACK_IMPORTED_MODULE_0__.projectEventListeners()
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "projects": () => /* binding */ projects,
 /* harmony export */   "Project": () => /* binding */ Project,
 /* harmony export */   "projectEventListeners": () => /* binding */ projectEventListeners
 /* harmony export */ });
-// import * as mainModule from './index'
-
 const projects = [];
-console.log(projects)
 
 class Project {
 	constructor(title) {
@@ -39,11 +36,12 @@ class Project {
 	}
 
 	static addProjectToList(project) {
-		projects.push(project)
+		projects.push(project);
 	}
 
 	static displayProjects() {
 		const projectsList = document.getElementById('list');
+		projectsList.innerHTML = ``;
 		
 		if(projects !== null) {
 				projects.forEach((p) => {
