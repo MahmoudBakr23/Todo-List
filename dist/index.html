@@ -20,27 +20,15 @@
             <ul id="list" class="list-unstyled d-flex my-2 click"></ul>
         </div>
     </nav>
-    <section id="projectsPanel" class="d-none w-25 mr-2">
-
-    </section>
     <form id="projectForm" class="d-none">
         <div class="form-group w-50 mx-auto my-2">
             <input type="text" id="projectTitle" class="form-control" placeholder="add a project title..." required>
             <button type="submit" class="btn btn-success my-2 w-100" id="projectBtn">Create</button>
         </div>
     </form>
-    <form id="todoForm" class="">
-        <div class="form-group w-50 mx-auto my-2">
-            <label for="todoTitle">Title</label>
-            <input type="text" id="todoTitle" class="form-control" placeholder="what do you want to do?" required>
-            <label for="todoDescription">Description</label>
-            <input type="text" id="todoDescription" class="form-control" placeholder="describe your todo" required>
-            <label for="todoDueDate">Due Date</label>
-            <input type="datetime-local" id="todoDueDate" class="form-control" placeholder="" required>
-            <button type="submit" class="btn btn-success my-2 w-100" id="todoBtn">Create Todo</button>
-        </div>
-    </form>
-
+    <section id="projectsPanel" class="w-100 h-50 bg-dark p-3">
+        <div id="container"></div>
+    </section>
     <script src="./main.js"></script>
 </body>
 </html>

@@ -1,11 +1,16 @@
-import { displayAddTodoButton } from './todo';
+import * as todoModule from './todo'
 
 const projects = [];
 const projectsList = document.getElementById('list');
+const newProjectBtn = document.getElementById('newProject')
+const projectForm = document.getElementById('projectForm')
+const togglerBtn = document.querySelector('.navbar-toggler')
+const projectDivsContainer = document.getElementById('projectsPanel')
 
 export class Project {
 	constructor(title) {
 		this.title = title;
+		this.opened = false;
 	}
 
 	static addProjectToList(project) {
@@ -20,17 +25,38 @@ export class Project {
 					const projectTitle = document.createElement('li');
 					projectTitle.classList = "text-dark p-1"
 					projectTitle.innerHTML = `
-							<a id="project${index+1}" "data-project-idx=${index} href="#">${p.title}</a>
-					`.toUpperCase();
+							<a data-target=${index} href="#">${p.title.toUpperCase()}</a>
+					`;
 					projectsList.appendChild(projectTitle)
 			})
 		}
 	}
-}
 
-const newProjectBtn = document.getElementById('newProject')
-const projectForm = document.getElementById('projectForm')
-const togglerBtn = document.querySelector('.navbar-toggler')
+	static createProjectPanel(index) {
+		if(projects[index] && projects[index].opened == false) {
+			const projectTodos = document.createElement('div')
+			projectTodos.classList = `project-div div-${index} row my-4`
+			projectTodos.innerHTML = `
+				<div class="col-3">
+					<h5 class="text-white">${projects[index].title.toUpperCase()}</h5>
+					<button type="button" data-todo-target=${index} class="todoBtn project-btn-${index} btn btn-primary col-3">+</button>
+				</div>
+				<div class="col-9 todo-div todo-${index}"></div>
+			`
+			projectDivsContainer.appendChild(projectTodos);
+			projects[index].opened = true;
+		} else if(projects[index].opened == true) {
+				document.querySelectorAll('.project-div').forEach((p) => {
+				if(p.classList.contains('d-none') && p.classList.contains(`div-${index}`)) {
+					p.classList.remove('d-none')
+				} else {
+					p.classList.add('d-none')
+					projects[index].opened == false
+				}
+			})
+		}
+	}
+}
 
 export function projectEventListeners() {
 	newProjectBtn.addEventListener('click', () => {
@@ -61,7 +87,9 @@ export function projectEventListeners() {
 	})
 
 	document.getElementById('list').addEventListener('click', (e) => {
-		const projectId = e.target.getAttribute('data-project-idx');
-		displayAddTodoButton();
+		const projectId = e.target.getAttribute('data-target')
+		if(projectId !== null) {
+			Project.createProjectPanel(projectId)
+		}
 	})
 }

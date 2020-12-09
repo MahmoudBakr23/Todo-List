@@ -1,5 +1,5 @@
 import * as projectModule from './project'
-import * as totosModule from './todo'
+import * as todoModule from './todo'
 
 projectModule.projectEventListeners()
-projectModule.Project.displayProjects()
+todoModule.todosEventListener()
