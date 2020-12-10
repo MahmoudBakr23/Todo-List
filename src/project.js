@@ -42,6 +42,7 @@ export class Project {
 					<button type="button" data-todo-target=${index} class="todoBtn project-btn-${index} btn btn-primary col-3">+</button>
 				</div>
 				<div class="col-9 todo-div todo-${index}"></div>
+				<div class="d-flex flex-column col-12 justify-content-center todo-list" id="todo-list-${index}"></div>
 			`
 			projectDivsContainer.appendChild(projectTodos);
 			projects[index].opened = true;
