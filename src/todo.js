@@ -15,9 +15,9 @@ export class Todo {
     todosForm.classList = `d-flex flex-wrap todo-form form-${index}`
     todosForm.id = "form-todo"
     todosForm.innerHTML = `
-      <input type="text" id="title-todo" class="form-control w-25" placeholder="Name:*" required>
-      <input type="text" id="desc-todo" class="form-control w-25" placeholder="Description:*" required>
-      <select class="browser-default custom-select form-control w-25" id="menu" required>
+      <input type="text" id="title-todo" class="form-control" placeholder="Name:*" required>
+      <input type="text" id="desc-todo" class="form-control" placeholder="Description:*" required>
+      <select class="browser-default custom-select form-control" id="menu" required>
         <option selected>Select Priority</option>
         <option value="Immediate">Immediate</option>
         <option value="Important">Important</option>
@@ -26,7 +26,7 @@ export class Todo {
         <option value="Later">Later</option>
       </select>
       <input type="datetime-local" id="date-todo" class="form-control w-25" required>
-      <button type="submit" class="btn btn-success w-25" data-add-todo=${index}>Add</button>
+      <button type="submit" class="btn btn-success" data-add-todo=${index}>+</button>
     `
     const todosContainers = document.querySelectorAll('.todo-div')
     todosContainers.forEach((c) => {
@@ -66,6 +66,14 @@ export class Todo {
         p.classList.add('text-secondary')
       }
     })
+  }
+
+  set editTodo(value) {
+    const edits = value.split(' ');
+    this.title = edits[0]
+    this.description = edits[1]
+    this.priority = edits[2]
+    this.dueDate = edits[3]
   }
 }
 
