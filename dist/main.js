@@ -146,9 +146,10 @@ __webpack_require__.r(__webpack_exports__);
 const parentContainer = document.getElementById('projectsPanel')
 
 class Todo {
-  constructor(title, description, dueDate, identifier) {
+  constructor(title, description, priority, dueDate, identifier) {
     this.title = title;
     this.description = description;
+    this.priority = priority;
     this.dueDate = dueDate;
     this.identifier = identifier;
   }
@@ -160,6 +161,14 @@ class Todo {
     todosForm.innerHTML = `
       <input type="text" id="title-todo" class="form-control w-25" placeholder="Name:*" required>
       <input type="text" id="desc-todo" class="form-control w-25" placeholder="Description:*" required>
+      <select class="browser-default custom-select form-control w-25" id="menu" required>
+        <option selected>Select Priority</option>
+        <option value="Immediate">Immediate</option>
+        <option value="Important">Important</option>
+        <option value="Regular">Regular</option>
+        <option value="Soon">Soon</option>
+        <option value="Later">Later</option>
+      </select>
       <input type="datetime-local" id="date-todo" class="form-control w-25" required>
       <button type="submit" class="btn btn-success w-25" data-add-todo=${index}>Add</button>
     `
@@ -181,11 +190,26 @@ class Todo {
       todoItem.innerHTML = `
         <li class="p-1">${todo.title}</li>
         <li class="p-1">${todo.description}</li>
+        <li class="p-2 priority ${todo.priority}">${todo.priority}</li>
         <li class="p-1">${todo.dueDate}</li>
         <li><a href="#" class="btn btn-danger btn-sm delete">X</a></li>
       `
       todoList.appendChild(todoItem)
     }
+    const priorities = parentContainer.querySelectorAll('.priority')
+    priorities.forEach((p) => {
+      if(p.classList.contains('Immediate')) {
+        p.classList.add('bg-danger')
+      } else if(p.classList.contains('Important')) {
+        p.classList.add('bg-warning')
+      } else if(p.classList.contains('Regular')) {
+        p.classList.add('bg-success')
+      } else if(p.classList.contains('Soon')) {
+        p.classList.add('bg-info')
+      } else {
+        p.classList.add('text-secondary')
+      }
+    })
   }
 }
 
@@ -211,10 +235,11 @@ function todosEventListener(){
         e.preventDefault();
         const title = document.getElementById(`title-todo`).value;
         const description = document.getElementById(`desc-todo`).value;
+        const priority = document.getElementById('menu').value;
         const dueDate = document.getElementById(`date-todo`).value;
         const identifier = addBtnId;
 
-        const newTodo = new Todo(title, description, dueDate, identifier)
+        const newTodo = new Todo(title, description, priority, dueDate, identifier)
         Todo.displayTodos(addBtnId, newTodo)
 
         theForm.reset();
