@@ -1,49 +1,52 @@
 #list {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 #form-todo {
-    padding: 0;
-    justify-content: center;
-    button {
-        text-align: center;
-        border-radius: 50%;
-        margin: 0 0.5rem;
+  padding: 0;
+  justify-content: center;
+
+  button {
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+  }
+
+  #title-todo {
+    width: 20%;
+  }
+
+  #desc-todo {
+    width: 20%;
+  }
+
+  #date-todo {
+    width: 10%;
+  }
+
+  #menu {
+    width: 20%;
+  }
+
+  #title-todo,
+  #desc-todo,
+  #date-todo,
+  #menu {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 0 0.3rem;
+    margin: 0 0.5rem;
+    color: #999;
+
+    &::placeholder {
+      color: #999;
     }
 
-    #title-todo,
-    #desc-todo,
-    #date-todo,
-    #menu {
-        background-color: transparent;
-        outline: none;
-        border: none;
-        padding: 0 0.3rem;
-        margin: 0 0.5rem;
-        color: #999;
-        &::placeholder {
-            color: #999;
-        }
-        &:focus {
-            border: none;
-            box-shadow: none;
-            border-top: 2px solid #f42;
-        }
+    &:focus {
+      border: none;
+      box-shadow: none;
+      border-top: 2px solid #f42;
     }
-
-    #title-todo {
-        width: 20%;
-    }
-
-    #desc-todo {
-        width: 20%;
-    }
-
-    #date-todo {
-        width: 10%;
-    }
-
-    #menu {
-        width: 20%;
-    }
+  }
 }

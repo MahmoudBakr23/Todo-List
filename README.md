@@ -5,7 +5,7 @@ this is a javascript todos application
 
 ## Live Link
 
-- [<<DEMO>>](https://rawcdn.githack.com/MahmoudBakr23/Todo-List/bebaeca86334f6e84941b2734c394a93166ba48c/dist/index.html)
+- Live: [DEMO](https://rawcdn.githack.com/MahmoudBakr23/Todo-List/bebaeca86334f6e84941b2734c394a93166ba48c/dist/index.html)
 
 ## Built with
 

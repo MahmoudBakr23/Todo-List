@@ -1,5 +1,5 @@
-import * as projectModule from './project'
-import * as todoModule from './todo'
+import * as projectModule from './project';
+import * as todoModule from './todo';
 
-projectModule.projectEventListeners()
-todoModule.todosEventListener()
+projectModule.projectEventListeners();
+todoModule.todosEventListener();

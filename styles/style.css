@@ -1,2 +1,58 @@
-#list{flex-wrap:wrap}#form-todo{padding:0;justify-content:center}#form-todo button{text-align:center;border-radius:50%;margin:0 0.5rem}#form-todo #title-todo,#form-todo #desc-todo,#form-todo #date-todo,#form-todo #menu{background-color:transparent;outline:none;border:none;padding:0 0.3rem;margin:0 0.5rem;color:#999}#form-todo #title-todo::placeholder,#form-todo #desc-todo::placeholder,#form-todo #date-todo::placeholder,#form-todo #menu::placeholder{color:#999}#form-todo #title-todo:focus,#form-todo #desc-todo:focus,#form-todo #date-todo:focus,#form-todo #menu:focus{border:none;box-shadow:none;border-top:2px solid #f42}#form-todo #title-todo{width:20%}#form-todo #desc-todo{width:20%}#form-todo #date-todo{width:10%}#form-todo #menu{width:20%}
-/*# sourceMappingURL=style.css.map */
+#list {
+  flex-wrap: wrap;
+}
+
+#form-todo {
+  padding: 0;
+  justify-content: center;
+}
+
+#form-todo button {
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 0.5rem;
+}
+
+#form-todo #title-todo {
+  width: 20%;
+}
+
+#form-todo #desc-todo {
+  width: 20%;
+}
+
+#form-todo #date-todo {
+  width: 10%;
+}
+
+#form-todo #menu {
+  width: 20%;
+}
+
+#form-todo #title-todo,
+#form-todo #desc-todo,
+#form-todo #date-todo,
+#form-todo #menu {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 0 0.3rem;
+  margin: 0 0.5rem;
+  color: #999;
+}
+
+#form-todo #title-todo::placeholder,
+#form-todo #desc-todo::placeholder,
+#form-todo #date-todo::placeholder,
+#form-todo #menu::placeholder {
+  color: #999;
+}
+
+#form-todo #title-todo:focus,
+#form-todo #desc-todo:focus,
+#form-todo #date-todo:focus,
+#form-todo #menu:focus {
+  border: none;
+  box-shadow: none;
+  border-top: 2px solid #f42;
+}
