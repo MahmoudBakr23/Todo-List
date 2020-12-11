@@ -192,7 +192,10 @@ class Todo {
         <li class="p-1">${todo.description}</li>
         <li class="p-2 priority ${todo.priority}">${todo.priority}</li>
         <li class="p-1">${todo.dueDate}</li>
-        <li><a href="#" class="btn btn-danger btn-sm delete">X</a></li>
+        <div class="d-flex justify-content-evenly">
+          <li><a href="#" class="btn btn-warning btn-sm edit">🖊</a></li>
+          <li><a href="#" class="btn btn-danger btn-sm delete">X</a></li>
+        </div>
       `
       todoList.appendChild(todoItem)
     }
@@ -212,18 +215,15 @@ class Todo {
     })
   }
 
-  set editTodo(value) {
-    const edits = value.split(' ');
-    this.title = edits[0]
-    this.description = edits[1]
-    this.priority = edits[2]
-    this.dueDate = edits[3]
+  static editTodo(todo, el) {
+    console.log(todo);
+    console.log(el);
   }
 }
 
 function deleteTodo(el) {
   if(el.classList.contains(`delete`)) {
-    el.parentElement.parentElement.remove();
+    el.parentElement.parentElement.parentElement.remove();
   }
 }
 
@@ -237,6 +237,8 @@ function todosEventListener(){
 
   parentContainer.addEventListener('click', (e) => {
     const addBtnId = e.target.getAttribute('data-todo-target')
+    const editEl = e.target
+
     if(addBtnId !== null) {
       const theForm = document.getElementById(`form-todo`)
       theForm.addEventListener('submit', (e) => {
@@ -252,6 +254,17 @@ function todosEventListener(){
 
         theForm.reset();
       })
+    }
+
+    if(editEl !== null && editEl.classList.contains('edit')) {
+      Todo.editTodo(editEl)
+      const theChildren = editEl.parentElement.parentElement.parentElement.children;
+      document.getElementById(`title-todo`).value = theChildren[0].innerHTML;
+      document.getElementById(`desc-todo`).value = theChildren[1].innerHTML;
+      document.getElementById('menu').value = theChildren[2].innerHTML;
+      document.getElementById(`date-todo`).value = theChildren[3].innerHTML;
+
+      editEl.parentElement.parentElement.parentElement.remove();
     }
   })
 
