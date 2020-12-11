@@ -54,6 +54,10 @@ export class Project {
   }
 }
 
+const defaultProject = new Project('My Project');
+Project.addProjectToList(defaultProject);
+Project.displayProjects();
+
 export function projectEventListeners() {
   newProjectBtn.addEventListener('click', () => {
     if (projectForm.classList.contains('d-none')) {
