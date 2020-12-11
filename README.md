@@ -15,9 +15,9 @@ this is a javascript todos application
 
 ## Getting Started
 To get a local copy of the repository please run the following commands on your terminal:
-```$ cd <folder> ```
-```$ git clone https://github.com/MahmoudBakr23/Todo-List.git ```
-```cd Restaurant ```
+- ```$ cd <folder>```
+- ```$ git clone https://github.com/MahmoudBakr23/Todo-List.git ```
+- ```$ cd Todo-List ```
 
 ## Authors
 
