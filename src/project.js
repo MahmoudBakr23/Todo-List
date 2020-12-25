@@ -5,7 +5,7 @@ const projectForm = document.getElementById('projectForm');
 const togglerBtn = document.querySelector('.navbar-toggler');
 const projectDivsContainer = document.getElementById('projectsPanel');
 
-export class Project {
+class Project {
   constructor(title) {
     this.title = title;
     this.opened = false;
@@ -16,14 +16,18 @@ export class Project {
   }
 
   static displayProjects() {
-    projectsList.innerHTML = '';
+    if(projectsList !== null) {
+      projectsList.innerHTML = '';
+    }
 
     if (projects !== null) {
       projects.forEach((p, index) => {
         const projectTitle = document.createElement('li');
         projectTitle.classList = 'text-dark p-1';
         projectTitle.innerHTML = `<a data-target=${index} href="#">${p.title.toUpperCase()}</a>`;
-        projectsList.appendChild(projectTitle);
+        if(projectsList !== null) {
+          projectsList.appendChild(projectTitle);
+        }
       });
     }
   }
@@ -59,37 +63,43 @@ Project.addProjectToList(defaultProject);
 Project.displayProjects();
 
 export function projectEventListeners() {
-  newProjectBtn.addEventListener('click', () => {
-    if (projectForm.classList.contains('d-none')) {
-      projectForm.classList.remove('d-none');
-    } else {
+  if(newProjectBtn !== null) {
+    newProjectBtn.addEventListener('click', () => {
+      if (projectForm.classList.contains('d-none')) {
+        projectForm.classList.remove('d-none');
+      } else {
+        projectForm.classList.add('d-none');
+      }
+    });
+  }
+
+  if(projectForm !== null) {
+    projectForm.addEventListener('submit', (p) => {
+      p.preventDefault();
+  
+      const title = document.getElementById('projectTitle').value;
+  
+      const newProject = new Project(title);
+  
+      Project.addProjectToList(newProject);
+      Project.displayProjects();
+  
+      projectForm.reset();
       projectForm.classList.add('d-none');
-    }
-  });
+  
+      if (projectsList.classList.contains('click')) {
+        togglerBtn.click();
+        projectsList.classList.remove('click');
+      }
+    });
+  }
 
-  projectForm.addEventListener('submit', (p) => {
-    p.preventDefault();
-
-    const title = document.getElementById('projectTitle').value;
-
-    const newProject = new Project(title);
-
-    Project.addProjectToList(newProject);
-    Project.displayProjects();
-
-    projectForm.reset();
-    projectForm.classList.add('d-none');
-
-    if (projectsList.classList.contains('click')) {
-      togglerBtn.click();
-      projectsList.classList.remove('click');
-    }
-  });
-
-  document.getElementById('list').addEventListener('click', (e) => {
-    const projectId = e.target.getAttribute('data-target');
-    if (projectId !== null) {
-      Project.createProjectPanel(projectId);
-    }
-  });
+  if(projectsList !== null) {
+    projectsList.addEventListener('click', (e) => {
+      const projectId = e.target.getAttribute('data-target');
+      if (projectId !== null) {
+        Project.createProjectPanel(projectId);
+      }
+    });
+  }
 }
