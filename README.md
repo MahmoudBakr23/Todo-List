@@ -21,6 +21,7 @@ To get a local copy of the repository please run the following commands on your 
 - ```$ cd Todo-List ```
 
 To run the tests:
+- ```npm install --save-dev @babel/preset-env```
 - ```npm run test```
 
 ## Authors
