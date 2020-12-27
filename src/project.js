@@ -16,7 +16,7 @@ export class Project {
   }
 
   static displayProjects() {
-    if(projectsList !== null) {
+    if (projectsList !== null) {
       projectsList.innerHTML = '';
     }
 
@@ -25,7 +25,7 @@ export class Project {
         const projectTitle = document.createElement('li');
         projectTitle.classList = 'text-dark p-1';
         projectTitle.innerHTML = `<a data-target=${index} href="#">${p.title.toUpperCase()}</a>`;
-        if(projectsList !== null) {
+        if (projectsList !== null) {
           projectsList.appendChild(projectTitle);
         }
       });
@@ -63,7 +63,7 @@ Project.addProjectToList(defaultProject);
 Project.displayProjects();
 
 export function projectEventListeners() {
-  if(newProjectBtn !== null) {
+  if (newProjectBtn !== null) {
     newProjectBtn.addEventListener('click', () => {
       if (projectForm.classList.contains('d-none')) {
         projectForm.classList.remove('d-none');
@@ -73,7 +73,7 @@ export function projectEventListeners() {
     });
   }
 
-  if(projectForm !== null) {
+  if (projectForm !== null) {
     projectForm.addEventListener('submit', (p) => {
       p.preventDefault();
 
@@ -94,7 +94,7 @@ export function projectEventListeners() {
     });
   }
 
-  if(projectsList !== null) {
+  if (projectsList !== null) {
     projectsList.addEventListener('click', (e) => {
       const projectId = e.target.getAttribute('data-target');
       if (projectId !== null) {

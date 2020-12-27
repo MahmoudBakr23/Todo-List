@@ -54,7 +54,7 @@ class Project {
   }
 
   static displayProjects() {
-    if(projectsList !== null) {
+    if (projectsList !== null) {
       projectsList.innerHTML = '';
     }
 
@@ -63,7 +63,7 @@ class Project {
         const projectTitle = document.createElement('li');
         projectTitle.classList = 'text-dark p-1';
         projectTitle.innerHTML = `<a data-target=${index} href="#">${p.title.toUpperCase()}</a>`;
-        if(projectsList !== null) {
+        if (projectsList !== null) {
           projectsList.appendChild(projectTitle);
         }
       });
@@ -101,7 +101,7 @@ Project.addProjectToList(defaultProject);
 Project.displayProjects();
 
 function projectEventListeners() {
-  if(newProjectBtn !== null) {
+  if (newProjectBtn !== null) {
     newProjectBtn.addEventListener('click', () => {
       if (projectForm.classList.contains('d-none')) {
         projectForm.classList.remove('d-none');
@@ -111,7 +111,7 @@ function projectEventListeners() {
     });
   }
 
-  if(projectForm !== null) {
+  if (projectForm !== null) {
     projectForm.addEventListener('submit', (p) => {
       p.preventDefault();
 
@@ -132,7 +132,7 @@ function projectEventListeners() {
     });
   }
 
-  if(projectsList !== null) {
+  if (projectsList !== null) {
     projectsList.addEventListener('click', (e) => {
       const projectId = e.target.getAttribute('data-target');
       if (projectId !== null) {
@@ -235,24 +235,24 @@ function deleteTodo(el) {
 }
 
 function todosEventListener() {
-  if(parentContainer !== null) {
+  if (parentContainer !== null) {
     parentContainer.addEventListener('click', (e) => {
       const btnId = e.target.getAttribute('data-todo-target');
       const editId = e.target.getAttribute('data-edit-target');
       if (btnId !== null) {
         Todo.createTodoForm(btnId);
       }
-  
+
       if (editId !== null) {
         Todo.createTodoForm(editId);
       }
     });
-  
+
     parentContainer.addEventListener('click', (e) => {
       const addBtnId = e.target.getAttribute('data-todo-target');
       const addEditId = e.target.getAttribute('data-edit-target');
       const editEl = e.target;
-  
+
       if (addBtnId !== null) {
         const theForm = document.getElementById('form-todo');
         theForm.addEventListener('submit', (e) => {
@@ -262,13 +262,13 @@ function todosEventListener() {
           const priority = document.getElementById('menu').value;
           const dueDate = document.getElementById('date-todo').value;
           const identifier = addBtnId;
-  
+
           const newTodo = new Todo(title, description, priority, dueDate, identifier);
           Todo.displayTodos(addBtnId, newTodo);
           theForm.reset();
         });
       }
-  
+
       if (addEditId !== null) {
         const theForm = document.getElementById('form-todo');
         theForm.addEventListener('submit', (e) => {
@@ -278,24 +278,24 @@ function todosEventListener() {
           const priority = document.getElementById('menu').value;
           const dueDate = document.getElementById('date-todo').value;
           const identifier = addEditId;
-  
+
           const newTodo = new Todo(title, description, priority, dueDate, identifier);
           Todo.displayTodos(addEditId, newTodo);
           theForm.reset();
         });
       }
-  
+
       if (editEl !== null && editEl.classList.contains('edit')) {
         const theChildren = editEl.parentElement.parentElement.parentElement.children;
         document.getElementById('title-todo').value = theChildren[0].innerHTML;
         document.getElementById('desc-todo').value = theChildren[1].innerHTML;
         document.getElementById('menu').value = theChildren[2].innerHTML;
         document.getElementById('date-todo').value = theChildren[3].innerHTML;
-  
+
         editEl.parentElement.parentElement.parentElement.remove();
       }
     });
-  
+
     parentContainer.addEventListener('click', (e) => {
       const elId = e.target;
       if (elId !== null) {

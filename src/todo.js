@@ -78,24 +78,24 @@ function deleteTodo(el) {
 }
 
 export function todosEventListener() {
-  if(parentContainer !== null) {
+  if (parentContainer !== null) {
     parentContainer.addEventListener('click', (e) => {
       const btnId = e.target.getAttribute('data-todo-target');
       const editId = e.target.getAttribute('data-edit-target');
       if (btnId !== null) {
         Todo.createTodoForm(btnId);
       }
-  
+
       if (editId !== null) {
         Todo.createTodoForm(editId);
       }
     });
-  
+
     parentContainer.addEventListener('click', (e) => {
       const addBtnId = e.target.getAttribute('data-todo-target');
       const addEditId = e.target.getAttribute('data-edit-target');
       const editEl = e.target;
-  
+
       if (addBtnId !== null) {
         const theForm = document.getElementById('form-todo');
         theForm.addEventListener('submit', (e) => {
@@ -105,13 +105,13 @@ export function todosEventListener() {
           const priority = document.getElementById('menu').value;
           const dueDate = document.getElementById('date-todo').value;
           const identifier = addBtnId;
-  
+
           const newTodo = new Todo(title, description, priority, dueDate, identifier);
           Todo.displayTodos(addBtnId, newTodo);
           theForm.reset();
         });
       }
-  
+
       if (addEditId !== null) {
         const theForm = document.getElementById('form-todo');
         theForm.addEventListener('submit', (e) => {
@@ -121,24 +121,24 @@ export function todosEventListener() {
           const priority = document.getElementById('menu').value;
           const dueDate = document.getElementById('date-todo').value;
           const identifier = addEditId;
-  
+
           const newTodo = new Todo(title, description, priority, dueDate, identifier);
           Todo.displayTodos(addEditId, newTodo);
           theForm.reset();
         });
       }
-  
+
       if (editEl !== null && editEl.classList.contains('edit')) {
         const theChildren = editEl.parentElement.parentElement.parentElement.children;
         document.getElementById('title-todo').value = theChildren[0].innerHTML;
         document.getElementById('desc-todo').value = theChildren[1].innerHTML;
         document.getElementById('menu').value = theChildren[2].innerHTML;
         document.getElementById('date-todo').value = theChildren[3].innerHTML;
-  
+
         editEl.parentElement.parentElement.parentElement.remove();
       }
     });
-  
+
     parentContainer.addEventListener('click', (e) => {
       const elId = e.target;
       if (elId !== null) {
