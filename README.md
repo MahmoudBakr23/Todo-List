@@ -20,6 +20,9 @@ To get a local copy of the repository please run the following commands on your 
 - ```$ git clone https://github.com/MahmoudBakr23/Todo-List.git ```
 - ```$ cd Todo-List ```
 
+To run the tests:
+- ```npm run test```
+
 ## Authors
 
 👤 **Mahmoud Bakr**
