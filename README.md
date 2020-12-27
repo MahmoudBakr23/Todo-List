@@ -10,6 +10,7 @@ this is a javascript todos application
 ## Built with
 
 - Pure JavaScript
+- Jest
 - DOM properties and attributes
 - HTML & SCSS
 
