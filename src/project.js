@@ -1,11 +1,11 @@
-const projects = [];
-const projectsList = document.getElementById('list');
-const newProjectBtn = document.getElementById('newProject');
-const projectForm = document.getElementById('projectForm');
-const togglerBtn = document.querySelector('.navbar-toggler');
-const projectDivsContainer = document.getElementById('projectsPanel');
+export const projects = [];
+export const projectsList = document.getElementById('list');
+export const newProjectBtn = document.getElementById('newProject');
+export const projectForm = document.getElementById('projectForm');
+export const togglerBtn = document.querySelector('.navbar-toggler');
+export const projectDivsContainer = document.getElementById('projectsPanel');
 
-class Project {
+export class Project {
   constructor(title) {
     this.title = title;
     this.opened = false;
@@ -76,17 +76,17 @@ export function projectEventListeners() {
   if(projectForm !== null) {
     projectForm.addEventListener('submit', (p) => {
       p.preventDefault();
-  
+
       const title = document.getElementById('projectTitle').value;
-  
+
       const newProject = new Project(title);
-  
+
       Project.addProjectToList(newProject);
       Project.displayProjects();
-  
+
       projectForm.reset();
       projectForm.classList.add('d-none');
-  
+
       if (projectsList.classList.contains('click')) {
         togglerBtn.click();
         projectsList.classList.remove('click');

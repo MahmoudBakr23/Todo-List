@@ -1,6 +1,6 @@
 const parentContainer = document.getElementById('projectsPanel');
 
-class Todo {
+export class Todo {
   constructor(title, description, priority, dueDate, identifier) {
     this.title = title;
     this.description = description;
